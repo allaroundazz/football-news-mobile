@@ -1,5 +1,10 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:football_news/screens/menu.dart';
 import 'package:football_news/widgets/left_drawer.dart';
+import 'package:pbp_django_auth/pbp_django_auth.dart';
+import 'package:provider/provider.dart';
 
 class NewsFormPage extends StatefulWidget {
   const NewsFormPage({super.key});
@@ -104,7 +109,7 @@ class _NewsFormPageState extends State<NewsFormPage> {
                       borderRadius: BorderRadius.circular(5.0),
                     ),
                   ),
-                  value: _category,
+                  initialValue: _category,
                   items: _categories
                       .map((cat) => DropdownMenuItem(
                     value: cat,
@@ -159,7 +164,7 @@ class _NewsFormPageState extends State<NewsFormPage> {
                   padding: const EdgeInsets.all(8.0),
                   child: ElevatedButton(
                     style: ButtonStyle(
-                      backgroundColor: MaterialStateProperty.all(Colors.indigo),
+                      backgroundColor: WidgetStateProperty.all(Colors.indigo),
                     ),
                     onPressed: () async {
                       if (_formKey.currentState!.validate()) {
